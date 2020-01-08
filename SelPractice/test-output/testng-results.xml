@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="18476" started-at="2020-01-07T20:19:37Z" finished-at="2020-01-07T20:19:56Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="18476" started-at="2020-01-07T20:19:37Z" finished-at="2020-01-07T20:19:56Z">
+      <class name="tests.AdminLoginLogout">
+        <test-method status="PASS" signature="openBrowser()[pri:0, instance:tests.AdminLoginLogout@38467116]" name="openBrowser" is-config="true" duration-ms="5101" started-at="2020-01-07T20:19:32Z" finished-at="2020-01-07T20:19:37Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- openBrowser -->
+        <test-method status="PASS" signature="loginAdminPage()[pri:0, instance:tests.AdminLoginLogout@38467116]" name="loginAdminPage" duration-ms="12442" started-at="2020-01-07T20:19:37Z" finished-at="2020-01-07T20:19:50Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginAdminPage -->
+        <test-method status="PASS" signature="logoutAdminPage()[pri:0, instance:tests.AdminLoginLogout@38467116]" name="logoutAdminPage" duration-ms="5979" started-at="2020-01-07T20:19:50Z" depends-on-methods="tests.AdminLoginLogout.loginAdminPage" finished-at="2020-01-07T20:19:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logoutAdminPage -->
+        <test-method status="PASS" signature="closeBrowser()[pri:0, instance:tests.AdminLoginLogout@38467116]" name="closeBrowser" is-config="true" duration-ms="638" started-at="2020-01-07T20:19:58Z" finished-at="2020-01-07T20:19:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+      </class> <!-- tests.AdminLoginLogout -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
