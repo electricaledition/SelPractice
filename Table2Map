@@ -1,0 +1,66 @@
+package Demos;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+public class WebTableToHashMap {
+
+	WebDriver driver;
+	List<WebElement> totalCols, totalRows;
+	HashMap<Integer, Map> parentMap = new HashMap<Integer, Map>();
+	HashMap<String, String> childMap = new HashMap<String, String>();
+
+	@BeforeMethod
+	public void setup() {
+		System.setProperty("webdriver.chrome.driver",
+				"C:\\Users\\Balasti's\\git\\SelMaven\\PHP_Travels_Automation\\drivers\\chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("http://demo.guru99.com/test/web-table-element.php");
+	}
+
+	@Test
+	public void startDriver() {
+		String path1 = "//table[@class=('dataTable')]//thead//tr[1]//th";
+		String path2 = "//table[@class=('dataTable')]//tbody//tr";
+		totalCols = driver.findElements(By.xpath(path1));
+		totalRows = driver.findElements(By.xpath(path2));
+		System.out.println(totalCols.size());
+		for (int i = 1; i <= totalRows.size(); i++) {
+			for (int j = 1; j <= totalCols.size(); j++) {
+				String key = driver.findElement(By.xpath(path1 + "[" + j + "]")).getText().toString();
+				String value = driver.findElement(By.xpath(path2 + "[" + i + "]//td[" + j + "]")).getText().toString();
+				// System.out.println(key.toString()+" ------- "+value.toString());
+				childMap.put(key, value);
+			}
+			System.out.println("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
+			for (String name : childMap.keySet()) {
+				String key = name;
+				String value = childMap.get(name).toString();
+				System.out.println(key + " : " + value);
+			}
+
+			parentMap.put(i, childMap);
+		}
+		
+		System.out.println("ALL DETAILS");
+		System.out.println(Arrays.asList(parentMap));
+		
+	}
+
+	@AfterMethod
+	public void teardown() {
+		driver.close();
+	}
+
+}
